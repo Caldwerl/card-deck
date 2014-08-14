@@ -2,56 +2,60 @@
 <html>
 
   <head>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/modules.css">
     <title>Draw Poker</title>
   </head>
 
-  <body>
-    <header>
-      <img src="img/title.gif" />
+  <body class="table container_12">
+
+    <header class="grid_6 prefix_3 suffix_3">
+      <img src="img/title.gif" class="img__title" />
     </header>
 
     <form name="form1">
 
-      <div name="row1">
-        <img src="img/blank.gif" />
-        <img src="img/blank.gif" />
-        <img src="img/blank.gif" />
-        <img src="img/blank.gif" />
-        <img src="img/blank.gif" />
+      <div name="row1" class="table__row grid_8 prefix_2 suffix_2">
+        <img src="img/blank.gif" class="img__card" />
+        <img src="img/blank.gif" class="img__card" />
+        <img src="img/blank.gif" class="img__card" />
+        <img src="img/blank.gif" class="img__card" />
+        <img src="img/blank.gif" class="img__card" />
       </div>
 
-      <div name="row2">
+      <div name="row2" class="table__row grid_8 prefix_2 suffix_2">
         <a href="#" onclick="Hold(1);">
-          <img src="img/hold.gif" />
+          <img src="img/hold.gif" class="img__rectangle" />
         </a>
         <a href="#" onclick="Hold(2);">
-          <img src="img/hold.gif" />
+          <img src="img/hold.gif" class="img__rectangle" />
         </a>
         <a href="#" onclick="Hold(3);">
-          <img src="img/hold.gif" />
+          <img src="img/hold.gif" class="img__rectangle" />
         </a>
         <a href="#" onclick="Hold(4);">
-          <img src="img/hold.gif" />
+          <img src="img/hold.gif" class="img__rectangle" />
         </a>
         <a href="#" onclick="Hold(5);">
-          <img src="img/hold.gif" />
+          <img src="img/hold.gif" class="img__rectangle" />
         </a>
       </div>
 
-      <div name="row3">
-        <div>
-          <p>Total Score:</p>
+      <div name="row3" class="table__row grid_8 prefix_2 suffix_2">
+        <div class="grid_2">
+          <p class="table__text">Total Score:</p>
           <input type="TEXT" size="6" name="total" value="100" />
         </div>
 
-        <div>
-          <p>Current Hand:</p>
+        <div class="grid_3">
+          <p class="table__text">Current Hand:</p>
           <input type="TEXT" size="20" name="message" value="Press DEAL to begin." />
         </div>
 
-        <div>
+        <div class="grid_2">
           <a href="#" onclick="DealDraw();">
-            <img src="img/deal.gif" />
+            <img src="img/deal.gif" class="img__rectangle" />
           </a>
         </div>
       </div>
