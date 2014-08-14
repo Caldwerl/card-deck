@@ -1,0 +1,27 @@
+.table {
+  background-image:url("../img/background1.jpg");
+}
+
+.table__row {
+  margin: 15px 0px 15px 0px;
+}
+
+.table__text {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.img__title {
+  height: 81px;
+  width: 381px;
+}
+
+.img__card {
+  height: 136px;
+  width: 106px;
+}
+
+.img__rectangle {
+  height: 50px;
+  width: 106px;
+}
