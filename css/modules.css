@@ -4,6 +4,7 @@
 
 .table__row {
   margin: 15px 0px 15px 0px;
+  height: 136px;
 }
 
 .table__text {
@@ -24,4 +25,9 @@
 .img__rectangle {
   height: 50px;
   width: 106px;
+}
+
+#row3 {
+  height: 50px;
+  margin-top: -90px;
 }

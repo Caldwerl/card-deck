@@ -5,8 +5,6 @@ var held = new Array(6);
 var deck = new Array(53);
 
 
-
-
 function fname () {
 
   return "img/" + this.num + this.suit + ".gif";
@@ -65,15 +63,18 @@ function Deal () {
   //deal and display cards
   for (var i = 1; i < 6; i++) {
     hand[i] = deck[i];
-    document.images[i].src = hand[i].fname();
-    document.images[i+5].src = "img/hold.gif";
+    $('#card' + i)
+        .slideUp('slow')
+        .attr('src', hand[i].fname())
+        .slideDown('slow');
+    $('#hold' + i).attr('src', "img/hold.gif");
     held[i] = false;
   }
 
   dealt = true;
   score = score - 1; //deduct one for bet amount
-  document.form1.total.value = score;
-  document.images[11].src = "img/draw.gif";
+  $('#total').val(score);
+  $('#deal').attr('src', "img/draw.gif");
   Addscore();
 
 }
@@ -89,11 +90,11 @@ function Hold (num) {
 
   if (!held[num]) {
     held[num] = true;
-    document.images[5 + num].src = "img/hold2.gif";
+    $('#hold' + num).attr('src', "img/hold2.gif");
   }
   else {
     held[num] = false;
-    document.images[5 + num].src = "img/hold.gif";
+    $('#hold' + num).attr('src', "img/hold.gif");
   }
 }
 
@@ -107,14 +108,17 @@ function Draw () {
   for (var i = 1; i < 6; i++) {
     if (!held[i]) {
       hand[i] = deck[curcard++];
-      document.images[i].src = hand[i].fname();
+      $('#card' + i)
+        .slideUp('slow')
+        .attr('src', hand[i].fname())
+        .slideDown('slow');
     }
   }
 
   dealt = false;
-  document.images[11].src = "img/deal.gif";
+  $('#deal').attr('src', "img/deal.gif");
   score += Addscore();
-  document.form1.total.value = score;
+  $('#total').val(score);
 }
 
 
@@ -167,26 +171,22 @@ function Addscore () {
 
   //royal flush, straight flush, straight, flush
   if (straight && flush && nums[4] == 13 && nums[0] == 1) {
-
-    document.form1.message.value = "Royal Flush";
+    $('#message').val("Royal Flush");
     return 100;
   }
 
   if (straight && flush) {
-
-    document.form1.message.value = "Straight Flush";
+    $('#message').val("Straight Flush");
     return 50;
   }
 
   if (straight) {
-
-    document.form1.message.value = "Straight";
+    $('#message').val("Straight");
     return 4;
   }
 
   if (flush) {
-
-    document.form1.message.value = "Flush";
+    $('#message').val("Flush");
     return 5;
   }
 
@@ -201,7 +201,7 @@ function Addscore () {
 
   for (var i = 1; i < 14; i++) {
     if (tally[i] == 4) {
-      document.form1.message.value = "Four of a Kind";
+      $('#message').val("Four of a Kind");
       return 25;
     }
     if (tally[i] == 3) three = true;
@@ -209,17 +209,17 @@ function Addscore () {
   }
 
   if (three && pairs == 1) {
-    document.form1.message.value = "Full House";
+    $('#message').val("Full House");
     return 10;
   }
 
   if (pairs == 2) {
-    document.form1.message.value = "Two Pair";
+    $('#message').val("Two Pair");
     return 2;
   }
 
   if (three) {
-    document.form1.message.value = "Three of a Kind";
+    $('#message').val("Three of a Kind");
     return 3;
   }
 
@@ -228,11 +228,11 @@ function Addscore () {
         tally[11] == 2 ||
         tally[12] == 2 ||
         tally[13] == 2) {
-      document.form1.message.value = "Jacks or Better";
+      $('#message').val("Jacks or Better");
       return 1;
     }
   }
 
-  document.form1.message.value = "No Score";
+  $('#message').val("No Score");
   return 0;
 }
